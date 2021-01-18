@@ -12,6 +12,7 @@ class BestMoviesSpider(CrawlSpider):
     rules = (
         #Rule(LinkExtractor(allow=r'Items/'), callback='parse_item', follow=True),
         Rule(LinkExtractor(restrict_xpaths="//h3[@class= 'lister-item-header']/a"), callback='parse_item', follow=True),
+        Rule(LinkExtractor(restrict_xpaths="(//a [ @ class = 'lister-page-next next-page'])[1]")),
     )# in the crwal spider the callback method is defined as string.
 
     def parse_item(self, response):
